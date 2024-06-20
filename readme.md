@@ -135,19 +135,19 @@ It is recommended to use some form of version control to manage your configurati
 ***Commands***
 Some common commands you'll need to know are:
 
-`sudo nixos-rebuild`
---with: `switch`, `test`, `build`
---and:  `--flake /path/to/the/flake`
---example: `sudo nixos-rebuild switch --flake ~/SputNix-1`
+- `sudo nixos-rebuild`
+  - with: `switch`, `test`, `build`
+  - and:  `--flake /path/to/the/flake`
+  - example: `sudo nixos-rebuild switch --flake ~/SputNix-1`
 
-`nix flake update`
---with `/path/to/the/flake`
---example: `nix flake update ~/SputNix-1`
-`nix-collect-garbage`
+- `nix flake update`
+  - with `/path/to/the/flake`
+  - example: `nix flake update ~/SputNix-1`
 
---with: `-d`, `-delete-older-than`
---and: `3d` 3days, `5m` 5months, `2w` 2weeks
---example: `nix-collect-garbage --delete-older-than 10d`
+- `nix-collect-garbage`
+  - with: `-d`, `-delete-older-than`
+  - and: `3d` 3days, `5m` 5months, `2w` 2weeks
+  - example: `nix-collect-garbage --delete-older-than 10d`
 
 ***Home-manager***
 Home manager is a way to manage your home directory and user packages using Nix. It has tons of useful options to decoratively manage users, but currently does not support automatic rollbacks. You of course can, but you'll have to manually switch profiles. But It also doesn't need sudo to make changes, so it's not like you can break your system with it. This is extremely useful for system admins who want to make users manage themselves with out admin privileges. it can also be used on other distros and even on macs. But for non power users and those who are the only users on their machine, home manager has less to offer.
