@@ -1,12 +1,12 @@
 #### Table of contents
-[Overview](#overview)
+1. [Overview](#overview)
 **--Instructions**
-[Flashing the USB](#flashing+a+usb)
-[Booting from a live cd](#booting+from+a+live+cd)
-[Bootstrapping flakes](#bootstrapping+flakes)
-[Configuration](#configuration)
-[Final steps](#final+steps)
-[Continued usage](#continued+usage)
+2. [Flashing the USB](#flashing+a+usb)
+3. [Booting from a live cd](#booting+from+a+live+cd)
+4. [Bootstrapping flakes](#bootstrapping+flakes)
+5. [Configuration](#configuration)
+6. [Final steps](#final+steps)
+7. [Continued usage](#continued+usage)
 
 # Overview
 
