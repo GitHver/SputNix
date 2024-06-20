@@ -1,8 +1,7 @@
 { config, pkgs, lib, inputs, outputs, ... }:
 
 let
-  hostname = import ./unique/hostname.nix;
-  username = import ./unique/username.nix;
+  username = import ./username.nix;
 in
 { # ==== Variable scope ====================================================== #
 
@@ -21,24 +20,28 @@ in
   home.packages = with pkgs; [
   
   # ==== Internet ==================== #
-    firefox
-    thunderbird  
-    tor-browser
-    webcord         # no telemetry discord
-    signal-desktop
+    firefox         # Fiwefwox! or
+    #librewolf      # Pre hardened Firefox
+    thunderbird     # FOSS email client.
+    tor-browser     # Anonymous web browser.
+    signal-desktop  # Private messages.
+    #webcord        # No telemetry discord.
 
   # ==== Creativity ================== #
-    obsidian  # or logseq
-    #obs-studio 
-    #blender
+    obsidian    # Markdown file editor, or
+    #logseq     # A FOSS alternative.
+    #obs-studio # Recording software.
+    #blender    # 3D rendering software.
 
   # ==== Terminal utils ============== #
-    zellij  # or tmux
-    helix   # or neovim
+    zellij  # User friendly terminal multiplexer, or
+    #tmux   # A More known alternative,
+    helix   # No nonsense terminal modal text editor, or
+    #neovim # A bigger ecosystem with plugins.
     
   # ==== Misc ======================== #
     gnome.dconf-editor
-
+    #minecraft
   ];
 
 # ====== Shell configuration ================================================= #
@@ -50,7 +53,7 @@ in
 
   home.shellAliases = {
     rebuild-s = "sudo nixos-rebuild switch --flake ~/NixSystem#default";
-    rebuild-h = "home-manager switch --flake ~/NixUser#${username}@${hostname}";
+    rebuild-h = "home-manager switch --flake ~/NixUser#${username}";
     update-s = "sudo nix flake update ~/NixSystem";
     update-h = "nix flake update ~/NixUser";
     clean = "nix-collect-garbage --delete-older-than 1d";
@@ -58,7 +61,8 @@ in
 
 # ====== Set user variables ================================================== #
   home.sessionVariables = {
-    EDITOR = "hx";
+    EDITOR = "hx"; # change to nvim or equivalent
+    #ANY_VARIBLE = "VALUE"
   };
 
 # ====== Manage home files =================================================== #
