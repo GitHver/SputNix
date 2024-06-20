@@ -2,6 +2,8 @@
 
 let
   hostname = import ./../hostname.nix;
+  displayname        = "Whatever you want";       # example: "John Smith"
+  userdirectory-name = "your-current-directory";  # example: "john-smith"
   # some-variable = "some_value";
 in
 
@@ -11,7 +13,6 @@ in
   imports = [
   ./../archive/${hostname}/hardware-configuration.nix
   ./../archive/${hostname}/extra-hardware.nix
-  ./../modules/userlogic.nix    # Imports the user handling modules
   ./../modules/essentials.nix   # Imports essential modules
   ./../modules/gnome.nix        # the most popular desktop environment
   # ./../modules/steam.nix      # if you want steam remote play, uncomment this
@@ -37,7 +38,7 @@ in
       #allowedTCPPorts = [ ... ];   # or open some ports here
       #allowedUDPPorts = [ ... ];   # or here.
   };};
-  services.openssh.enable = false;
+  services.openssh.enable = false;  # Allows ssh remote connections if enabled
 
 # ====== Localization ======================================================== #
   time.timeZone = "Europe/London";
@@ -49,6 +50,7 @@ in
   };
 
 # ====== Nix specific settings =============================================== #
+  system.stateVersion = "24.05";    # What version of Nix to use
   programs.nix-ld.enable = true;              # Nix-ld is mostly for developers.
   programs.nix-ld.libraries = with pkgs; [];  # doesn't hurt to have it though!
   nix.settings = {
@@ -59,15 +61,14 @@ in
 # ====== Miscellaneous ======================================================= #
   services.printing.enable = true;  # Printer protocols
   xdg.portal.enable = true;         # X Screen portal
-  system.stateVersion = "24.05";    # What version of Nix to use
 
 # ====== User management ===================================================== #
-  users.mutableUsers = true;             # Makes the home directory writeable.
-  users.users = {                        # See *Users* for more info
-    "your-user-directory-name" = {         # example: "john-smith"
-    description  = "Your Display Name";    # example: "John Smith"
+  users.mutableUsers = true;         # Makes the home directory writeable.
+  users.users = {                    # See *Users* for more info
+    "${userdirectory}" = {             # example: "john-smith" see at top ↑
+    description  = "${displayname}";   # example: "John Smith"
     isNormalUser = true;
-    extragroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" ];
   };};
 
 # ====== System packages ===================================================== #
@@ -76,7 +77,7 @@ in
   # Below is where all the sytem-wide packages are installed.
   # go to https://search.nixos.org/packages to search for programs.
   environment.systemPackages = with pkgs; [
-    # name-of-package
+   #name-of-package
   # ==== pkgs ======================== #
     nerdfonts     # Font icon package.
     wl-clipboard  # Wayland Clipboard tool.
@@ -85,7 +86,7 @@ in
     lf        # A light weight terminal file explorer.
   # ==== Miscellaneous =============== #
     firefox   # This way you still have a browser while setting up home-manager
-    git       # Best learn to use git. it *WILL* make your life easier.
+    git       # Best learn to use git. It *WILL* make your life easier.
   ];
 
 };} #### End of variable & config scope. #######################################

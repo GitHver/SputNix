@@ -8,17 +8,16 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: let
-    hostname = import ./unique/hostname.nix;
-    username = import ./unique/username.nix;
+    username = import ./username.nix;
   in {
 
-    homeConfigurations = { # User home manager <<<<<<<<<<<<<<<<<<<<<<<<<<< #
-      "${username}@${hostname}" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations = { # User home manager =============================== #
+      "${username}" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = { inherit inputs; };
         modules = [ ./home.nix ];
       };
-    }; # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< #
-
+    }; # ===================================================================================== 
+    
   };
 }

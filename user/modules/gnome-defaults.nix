@@ -20,8 +20,8 @@ in {
   gtk = {
     enable = true;
     iconTheme = {
-      package = pkgs.nordzy-icon-theme;
-      name = "Nordzy";
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
     };
   };
 
@@ -48,7 +48,7 @@ in {
       clock-show-weekday = true;
       clock-show-date = true;
       ## Font stuff
-      monospace-font-name = "RobotoMono Nerd Font 10";
+      monospace-font-name = "CaskaydiaMono Nerd Font";
       font-antialiasing = "rgba";
     };
 

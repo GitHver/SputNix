@@ -8,7 +8,7 @@
   };
 
   config.i18n = {
-    defaultLocale = "en_GB.UTF8";
+    defaultLocale = "en_GB.UTF-8";
     extraLocaleSettings = {
       LC_ADDRESS =        "${config.locale-all}";
       LC_IDENTIFICATION = "${config.locale-all}";

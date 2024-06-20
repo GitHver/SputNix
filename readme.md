@@ -81,6 +81,7 @@ now you can use what ever text editor you chose to do the last editing steps to 
 
 **Hostname:**
 This is just the name of your computer. if you have for example a Lenovo yoga slim 7, then your hostname could be "slim7". your terminal will then display: `[user@slim7:~]$`
+Once you have decided on a hostname, open ~/Sputnix/archive/template/hostname.nix and replace the field with your desired hostname, then rename the template directory to the hostname and finally copy hostname.nix into ~/SputNix/. (the top directory).
 
 **Username:**
 Your username. The user field looks like this:
