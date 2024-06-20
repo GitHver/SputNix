@@ -6,3 +6,4 @@ send þarf myndband af yður að drekka að minsta kosti `330ml`~ af yðar eigin
 
 ### **Skál!**
 
+![Skál](./archive/image.png)
