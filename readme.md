@@ -1,12 +1,12 @@
 #### Table of contents
 1. [Overview](#overview)
 **--Instructions**
-2. [Flashing the USB](#flashing+a+usb)
-3. [Booting from a live cd](#booting+from+a+live+cd)
-4. [Bootstrapping flakes](#bootstrapping+flakes)
+2. [Flashing the USB](#flashing-a-usb)
+3. [Booting from a live cd](#booting-from-a-live+cd)
+4. [Bootstrapping flakes](#bootstrapping-flakes)
 5. [Configuration](#configuration)
-6. [Final steps](#final+steps)
-7. [Continued usage](#continued+usage)
+6. [Final steps](#final-steps)
+7. [Continued usage](#continued-usage)
 
 # Overview
 
@@ -134,14 +134,17 @@ It is recommended to use some form of version control to manage your configurati
 
 ***Commands***
 Some common commands you'll need to know are:
+
 `sudo nixos-rebuild`
 --with: `switch`, `test`, `build`
 --and:  `--flake /path/to/the/flake`
 --example: `sudo nixos-rebuild switch --flake ~/SputNix-1`
+
 `nix flake update`
 --with `/path/to/the/flake`
 --example: `nix flake update ~/SputNix-1`
 `nix-collect-garbage`
+
 --with: `-d`, `-delete-older-than`
 --and: `3d` 3days, `5m` 5months, `2w` 2weeks
 --example: `nix-collect-garbage --delete-older-than 10d`
