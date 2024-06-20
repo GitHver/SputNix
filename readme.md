@@ -130,9 +130,11 @@ This will rebuild your system according to your specification in the configurati
 This is all you need for a complete working system, but you need to learn to use it properly form you to gain any of the benefits of Nix.
 
 ***Version control***
+
 It is recommended to use some form of version control to manage your configuration files as even though you can roll back to any version of your system, the configuration file stays the same. so you would have to remember your changes for each version. I recommend using git, but you can just as easily copy the files each time and store it on a USB drive.
 
 ***Commands***
+
 Some common commands you'll need to know are:
 
 - `sudo nixos-rebuild`
@@ -150,6 +152,7 @@ Some common commands you'll need to know are:
   - example: `nix-collect-garbage --delete-older-than 10d`
 
 ***Home-manager***
+
 Home manager is a way to manage your home directory and user packages using Nix. It has tons of useful options to decoratively manage users, but currently does not support automatic rollbacks. You of course can, but you'll have to manually switch profiles. But It also doesn't need sudo to make changes, so it's not like you can break your system with it. This is extremely useful for system admins who want to make users manage themselves with out admin privileges. it can also be used on other distros and even on macs. But for non power users and those who are the only users on their machine, home manager has less to offer.
 
 I already have a guide on how to get home manager up and running that is compatible with this guide, but I am tweaking it to work well with declarative multi user installations and it's almost done, but for many people, this is all you need.
