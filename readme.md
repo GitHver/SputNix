@@ -46,7 +46,7 @@ Begin by copying the auto-generated hardware config file in /ect/nixos to the te
 copy = shift-ctrl-c
 paste = shift-ctrl-v*
 
-Now that you have your computers hardware scan in the SputNix directory, you now need to bootstrap the flake features to be able to rebuild your system from the 
+Now that you have your computers hardware scan in the SputNix directory, you now need to bootstrap the flake features to be able to rebuild your system from anywhere
 
 `$ sudo nano /etc/nixos/configuration.nix` or
 `$ sudo gnome-text-editor /etc/nixos/configuration.nix`
@@ -67,7 +67,7 @@ environment.systemPackages = with pkgs; [
 ];
 ```
 
-*Note: Micro is a terminal text editor that is way superior to nano, it uses common keybinds like (shift)"ctrl-c" and "ctrl-v" to copy and paste like any other program. You can also use helix or vim or VScodium if you want to, but Micro is simple and elegant in is worth learning.*
+*Note: Micro is a terminal text editor that is much more user friendly than the default nano, it uses common keybinds like (shift)"ctrl-c" and "ctrl-v" to copy and paste like any other program. You can also use helix or vim or VScodium if you want to, but Micro is simple and is worth learning.*
 
 ctrl-s to save and then close the program. then put the following in the terminal:
 
@@ -81,6 +81,7 @@ now you can use what ever text editor you chose to do the last editing steps to 
 
 **Hostname:**
 This is just the name of your computer. if you have for example a Lenovo yoga slim 7, then your hostname could be "slim7". your terminal will then display: `[user@slim7:~]$`
+
 Once you have decided on a hostname, open ~/Sputnix/archive/template/hostname.nix and replace the field with your desired hostname, then rename the template directory to the hostname and finally copy hostname.nix into ~/SputNix/. (the top directory).
 
 **Username:**
