@@ -71,7 +71,7 @@ environment.systemPackages = with pkgs; [
 
 ctrl-s to save and then close the program. then put the following in the terminal:
 
-`sudo nixos-rebuld switch`
+`sudo nixos-rebuild switch`
 
 And now you have access to flakes!
 
