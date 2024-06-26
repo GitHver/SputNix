@@ -1,4 +1,4 @@
-{pkgs, lib, config, ... }:
+{pkgs, config, ... }:
 
 let
   gnomeCoreUtils = with pkgs; [
@@ -26,7 +26,6 @@ let
     gnome.gnome-music           # (music) music player
     gnome.totem                 # (videos) video player  
   ];
-
   gnomeExtensionsList = with pkgs.gnomeExtensions; [
 /*1*/ paperwm
 /*2*/ vitals
@@ -54,10 +53,10 @@ in {
   home.packages = gnomeCoreUtils ++ gnomeExtensionsList;
 
   dconf.settings = {
-  
-    "org/gnome/shell".enabled-extensions =	# and then enables them here
-      (map (extension: extension.extensionUuid) gnomeExtensionsList)
-      ++ [
+
+   #==<< Activating all extensions >>==========================================>
+    "org/gnome/shell".enabled-extensions =
+      (map (extension: extension.extensionUuid) gnomeExtensionsList) ++ [
         "auto-move-windows@gnome-shell-extensions.gcampax.github.com"
         "places-menu@gnome-shell-extensions.gcampax.github.com"
         "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
@@ -67,14 +66,14 @@ in {
         #"system-monitor@gnome-shell-extensions.gcampax.github.com"
       ];
 
+   #
     "org/gnome/desktop/interface" = {
-    # == General ===================== #
+     #==<< General >>==================>
       color-scheme = "prefer-dark" ;
       enable-hot-corners = false;
       clock-show-weekday = true;
       clock-show-date = true;
-    # == Fonts ======================= #
-      #font-name = "CaskaydiaCove Nerd Font Mono Regular";
+     #==<< Fonts >>====================>
       #document-font-name = "";
       monospace-font-name = "CaskaydiaCove Nerd Font Mono Regular";
       font-antialiasing = "rgba";
@@ -88,15 +87,15 @@ in {
       show-screenshot-ui = [ "<Shift><Super>s" ];
     };
 
-  # ==== Dash to Dock ======================================================== #
+   #==<< Dash to Dock >>=======================================================>
     "org/gnome/shell/extensions/dash-to-dock" = {
-    # == Transparency ================ #
+     #==<< Transparency >>=============>
       transparency-mode = "FIXED";
       background-opacity = 0.0;
-    # == Dash action ================= #
+     #==<< Dash action ================>
       click-action  = "launch";
       scroll-action = "cycle-windows";
-    # == Other ======================= #
+     #==<< Other >>====================>
       dock-position = "RIGHT";
       dock-fixed = true;
       extend-height = true;
@@ -105,7 +104,7 @@ in {
       custom-theme-shrink = true;
     };
 
-  # ==== Blur my shell ======================================================= #
+   #==<< Blur my shell >>======================================================>
     "org/gnome/shell/extensions/blur-my-shell/panel" = {
       blur = true;
       static-blur = false;
@@ -124,7 +123,7 @@ in {
       brightness = 1.0;
     };
 
-  # ==== PaperWM ============================================================= #
+   #==<< PaperWM >>============================================================>
     "org/gnome/shell/extensions/paperwm" = {
       show-window-position-bar = false;
       window-gap = 5;
@@ -136,37 +135,43 @@ in {
       horizontal-margin = 5;
     };
     "org/gnome/shell/extensions/paperwm/keybindings" = {
-    # == Navigation ================== #
+     #==<< Navigation >>===============>
       # Move between windows
-      switch-left  			= [ "<Super>h" "<Super>Left" ];
-      switch-right 			= [ "<Super>l" "<Super>Right" ];
-      switch-down  			= [ "<Super>j" "<Super>Down" ];
-      switch-up    			= [ "<Super>k" "<Super>Up" ];
+      switch-left   = [ "<Super>h" "<Super>Left" ];
+      switch-right  = [ "<Super>l" "<Super>Right" ];
+      switch-down   = [ "<Super>j" "<Super>Down" ];
+      switch-up     = [ "<Super>k" "<Super>Up" ];
       # Rearange windows
-      move-left    			= [ "<Control><Super>h" "<Control><Super>Left" ];
-      move-right   			= [ "<Control><Super>l" "<Control><Super>Right" ];
-      move-down    			= [ "<Control><Super>j" "<Control><Super>Down" ];
-      move-up      			= [ "<Control><Super>k" "<Control><Super>Up" ];
+      move-left     = [ "<Control><Super>h" "<Control><Super>Left" ];
+      move-right    = [ "<Control><Super>l" "<Control><Super>Right" ];
+      move-down     = [ "<Control><Super>j" "<Control><Super>Down" ];
+      move-up       = [ "<Control><Super>k" "<Control><Super>Up" ];
       # Move between workspaces
-      switch-down-workspace 		= [ "<Alt><Super>j" "<Alt><Super>Down" ];
-      switch-up-workspace   		= [ "<Alt><Super>k" "<Alt><Super>Up" ];
+      switch-down-workspace   = [ "<Alt><Super>j" "<Alt><Super>Down" ];
+      switch-up-workspace     = [ "<Alt><Super>k" "<Alt><Super>Up" ];
       # Move between monitors
-      switch-monitor-left   		= [ "<Alt><Super>h" "<Alt><Super>Left" ];
-      switch-monitor-right  		= [ "<Alt><Super>l" "<Alt><Super>Right" ];
+      switch-monitor-left     = [ "<Alt><Super>h" "<Alt><Super>Left" ];
+      switch-monitor-right    = [ "<Alt><Super>l" "<Alt><Super>Right" ];
       # Move window between monitors
-      move-monitor-left     		= [ "<Control><Alt><Super>h" "<Control><Alt><Super>Left" ];
-      move-monitor-right    		= [ "<Control><Alt><Super>l" "<Control><Alt><Super>Right" ];
-    # == Actions ===================== #
+      move-monitor-left
+        = [ "<Control><Alt><Super>h" "<Control><Alt><Super>Left" ];
+      move-monitor-right
+        = [ "<Control><Alt><Super>l" "<Control><Alt><Super>Right" ];
+     #==<< Resizing windows >>=========>
+      cycle-width            = ["<Shift><Super>l" "<Shift><Super>Right"];
+      cycle-width-backwards  = ["<Shift><Super>h" "<Shift><Super>Left"];
+      cycle-height           = ["<Shift><Super>k" "<Shift><Super>Up"];
+      cycle-height-backwards = ["<Shift><Super>j" "<Shift><Super>Down"];
+     #==<< Actions >>==================>
       # Common rules
-      new-window   			= [ "<Super>c" ];
-      close-window 			= [ "<Super>x" ];
-      take-window  			= [ "<Super>z" ];
+      new-window    = [ "<Super>c" ];
+      close-window  = [ "<Super>x" ];
+      take-window   = [ "<Super>z" ];
       # Misc
-      center-horizontally         	= [ "<Super>b" ];
-      switch-open-window-position 	= [ "<Super>w" ];
-      switch-focus-mode           	= [ "<Super>e" ];
+      center-horizontally           = [ "<Super>b" ];
+      switch-open-window-position   = [ "<Super>w" ];
+      switch-focus-mode             = [ "<Super>e" ];
     };
-
 
   };
 
