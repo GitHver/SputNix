@@ -138,24 +138,24 @@ in {
     "org/gnome/shell/extensions/paperwm/keybindings" = {
     # == Navigation ================== #
       # Move between windows
-      switch-left  			= [ "<Super>h" ];
-      switch-right 			= [ "<Super>l" ];
-      switch-down  			= [ "<Super>j" ];
-      switch-up    			= [ "<Super>k" ];
+      switch-left  			= [ "<Super>h" "<Super>Left" ];
+      switch-right 			= [ "<Super>l" "<Super>Right" ];
+      switch-down  			= [ "<Super>j" "<Super>Down" ];
+      switch-up    			= [ "<Super>k" "<Super>Up" ];
       # Rearange windows
-      move-left    			= [ "<Control><Super>h" ];
-      move-right   			= [ "<Control><Super>l" ];
-      move-down    			= [ "<Control><Super>j" ];
-      move-up      			= [ "<Control><Super>k" ];
+      move-left    			= [ "<Control><Super>h" "<Control><Super>Left" ];
+      move-right   			= [ "<Control><Super>l" "<Control><Super>Right" ];
+      move-down    			= [ "<Control><Super>j" "<Control><Super>Down" ];
+      move-up      			= [ "<Control><Super>k" "<Control><Super>Up" ];
       # Move between workspaces
-      switch-down-workspace 		= [ "<Alt><Super>j" ];
-      switch-up-workspace   		= [ "<Alt><Super>k" ];
+      switch-down-workspace 		= [ "<Alt><Super>j" "<Alt><Super>Down" ];
+      switch-up-workspace   		= [ "<Alt><Super>k" "<Alt><Super>Up" ];
       # Move between monitors
-      switch-monitor-left   		= [ "<Alt><Super>h" ];
-      switch-monitor-right  		= [ "<Alt><Super>l" ];
+      switch-monitor-left   		= [ "<Alt><Super>h" "<Alt><Super>Left" ];
+      switch-monitor-right  		= [ "<Alt><Super>l" "<Alt><Super>Right" ];
       # Move window between monitors
-      move-monitor-left     		= [ "<Control><Alt><Super>h" ];
-      move-monitor-right    		= [ "<Control><Alt><Super>l" ];
+      move-monitor-left     		= [ "<Control><Alt><Super>h" "<Control><Alt><Super>Left" ];
+      move-monitor-right    		= [ "<Control><Alt><Super>l" "<Control><Alt><Super>Right" ];
     # == Actions ===================== #
       # Common rules
       new-window   			= [ "<Super>c" ];
