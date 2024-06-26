@@ -14,7 +14,7 @@ in
   ./../archive/${hostname}/hardware.nix
   ./../modules/essentials.nix   # Imports essential modules
   ./../modules/gnome.nix        # The most popular desktop environment
-  ./../modules/steam.nix        # If you want steam remote play, uncomment this
+  #./../modules/steam.nix        # If you want steam remote play, uncomment this
   ];
 
   config = { ################# Config scope ####################################
