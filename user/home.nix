@@ -1,7 +1,8 @@
 { pkgs, ... }: 
 
 let
-  username = import ./username.nix;
+  username = "your-userdirectory;
+  hometype = "Module" #or "Standalone"
 in
 { # ==== Variable scope ====================================================== #
 
@@ -72,17 +73,17 @@ in
   };
 
   home.shellAliases = {
-    rebuild-s = "sudo nixos-rebuild switch --flake ~/SputNix-1#default";
+    rebuild-s = "sudo nixos-rebuild switch --flake ~/SputNix-1#${hometype}";
     rebuild-h = "home-manager switch --flake ~/SputNix-1/user#${username}";
     update-s = "sudo nix flake update ~/SputNix-1";
     update-h = "nix flake update ~/SputNix-1/user";
     upgrade  = ''
       sudo nix flake update ~/SputNix-1
-      sudo nixos-rebuild switch --flake ~/SputNix-1#default
+      sudo nixos-rebuild switch --flake ~/SputNix-1${hometype}
       nix flake update ~/SputNix-1/user
       home-manager switch --flake ~/SputNix-1/user#${username}
       '';
-    clean = "nix-collect-garbage --delete-older-than 1d";
+    clean = "sudo nix-collect-garbage --delete-older-than 1d";
   };
 
 # ====== Set user variables ================================================== #
