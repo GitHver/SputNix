@@ -9,16 +9,32 @@ inputs = {
 outputs = { self, nixpkgs, ... }@inputs:
 
 { nixosConfigurations = {
-  
-    default = nixpkgs.lib.nixosSystem { 
+
+    # If you plan on using home manager with out sudo, or want
+    # to upate your user packages without affecting the system,
+    # use this. Also the only way for mutltiple users to be able
+    # to manage their own home with affecting other users.
+    Standalone = nixpkgs.lib.nixosSystem { 
       specialArgs = { inherit inputs; };
       modules = [ 
         ./configs/default.nix 
-        #./user/home.nix      # if you want home manager as a module
       ];
     };
 
-    ISO     = nixpkgs.lib.nixosSystem {
+    # If you want home manager as a module, use this.
+    Module     = nixpkgs.lib.nixosSystem { 
+      specialArgs = { inherit inputs; };
+      modules = [ 
+        ./configs/default.nix 
+        inputs.home-manager.nixosModules.default  
+      ];
+    };
+
+    # Using the following command, a result directory will be made
+    # with a custom ISO in the result/bin directory.
+    # $ nix build \.#nixosConfigurations.ISO.config.system.build.isoimage
+    # put your packages you want on the ISO in ./configd/ISO-image.nix
+    ISO        = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [ ./configs/ISO-image.nix ];
     };
