@@ -40,7 +40,7 @@ Once you're in your new NixOS system, you should open the terminal. it should be
 
 Begin by copying the auto-generated hardware config file in /ect/nixos to the template computer directory by typing or pasting the following command into the terminal:
 
-`$ sudo cp /etc/nixos/hardware-configuration.nix s~/SputNix-1/archive/template`
+`$ sudo cp /etc/nixos/hardware-configuration.nix ~/SputNix-1/archive/template`
 
 *note: to paste into the terminal, you need to also hold shift. e.x:
 copy = shift-ctrl-c
