@@ -2,7 +2,7 @@
 
 let
   username = "your-userdirectory;
-  hometype = "Module" #or "Standalone"
+  hometype = "Module"; #or "Standalone"
 in
 { # ==== Variable scope ====================================================== #
 
