@@ -3,8 +3,8 @@
 {
 
  #====<< Internationalisation properties. >>===================================>
-  options.extraLocaleSetting = lib.mkOption {
-    default                  = "en_GB.UTF-8";
+  options.extraLocaleSettings = lib.mkOption {
+    default                   = "en_GB.UTF-8";
   };
 
   config.i18n = {
