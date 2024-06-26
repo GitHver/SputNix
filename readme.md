@@ -123,7 +123,8 @@ Some programs require extra permissions to use fully. Steam needs firewall premi
 
 now, assuming that you have set up all the necessary configuration into the config file, you can type the following into your terminal:
 
-`$ sudo nixos-rebuild switch --flake ~/SputNix-1`
+`$ sudo nixos-rebuild switch --flake ~/SputNix-1#Module` or
+`$ sudo nixos-rebuild switch --flake ~/SputNix-1#Standalone`
 
 This will rebuild your system according to your specification in the configuration file
 
@@ -141,8 +142,8 @@ Some common commands you'll need to know are:
 
 - `sudo nixos-rebuild`
   - with: `switch`, `test`, `build`
-  - and:  `--flake /path/to/the/flake`
-  - example: `sudo nixos-rebuild switch --flake ~/SputNix-1`
+  - and:  `--flake /path/to/the/flake#home-type`
+  - example: `sudo nixos-rebuild switch --flake ~/SputNix-1#Module`
 
 - `nix flake update`
   - with `/path/to/the/flake`
