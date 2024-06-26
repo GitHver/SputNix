@@ -1,7 +1,7 @@
 { pkgs, ... }: 
 
 let
-  username = "your-userdirectory;
+  username = "your-userdirectory";
   hometype = "Module"; #or "Standalone"
 in
 { # ==== Variable scope ====================================================== #
