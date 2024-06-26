@@ -1,6 +1,31 @@
 {pkgs, lib, config, ... }:
 
 let
+  gnomeCoreUtils = with pkgs; [
+  # ==== Gnome core ================== #
+    #gnome-console               # (console) gnome's terminal emulator
+    gnome.nautilus              # (files) file manager
+    gnome-text-editor           # (text editor) a basic text editor
+    gnome.gnome-system-monitor  # (system monitor) resource monitor
+    gnome.gnome-disk-utility    # (disks) disk formatter
+    gnome.gnome-tweaks          # (tweaks) extra gnome settings
+  # ==== Gnome extra ================= #
+    gnome.file-roller           # (archive manager) file extractor
+    gnome.baobab                # (disk usage analyzer) storege space viewer
+    gnome.simple-scan           # (document scaner) printer interfacer
+    gnome.evince                # (document viewer) yeah.
+    gnome.gnome-clocks          # (clocks) clock and timer util
+    gnome.gnome-characters      # (characters) special characters and emojis
+    gnome.gnome-font-viewer     # (fonts) font picker
+    gnome-connections           # (connections) remote desktop connections
+    gnome.gnome-logs            # (logs) system logs
+    gnome.gnome-calculator      # (calculator) a... calculator
+    gnome.dconf-editor          # (dconf editor) GUI for dconf
+  # ==== Gnome media ================= #
+    loupe                       # (image viewer) photo booth
+    gnome.gnome-music           # (music) music player
+    gnome.totem                 # (videos) video player  
+  ];
   gnomeExtensionsList = with pkgs.gnomeExtensions; [
 /*1*/ paperwm
 /*2*/ vitals
@@ -25,7 +50,7 @@ in {
     };
   };
 
-  home.packages = gnomeExtensionsList;		# adds all extensions
+  home.packages = gnomeCoreUtils ++ gnomeExtensionsList;
 
   dconf.settings = {
   
@@ -42,13 +67,15 @@ in {
       ];
 
     "org/gnome/desktop/interface" = {
-      enable-hot-corners = false;
+    # == General ===================== #
       color-scheme = "prefer-dark" ;
-      ## Clock
+      enable-hot-corners = false;
       clock-show-weekday = true;
       clock-show-date = true;
-      ## Font stuff
-      monospace-font-name = "CaskaydiaMono Nerd Font";
+    # == Fonts ======================= #
+      #font-name = "CaskaydiaCove Nerd Font Mono Regular";
+      #document-font-name = "";
+      monospace-font-name = "CaskaydiaCove Nerd Font Mono Regular";
       font-antialiasing = "rgba";
     };
 
@@ -99,13 +126,13 @@ in {
   # ==== PaperWM ============================================================= #
     "org/gnome/shell/extensions/paperwm/keybindings" = {
       show-window-position-bar = false;
-      window-gap = 12;
-      selection-border-size = 5;
+      window-gap = 5;
+      selection-border-size = 0;
       selection-border-radius-top    = 12;
       selection-border-radius-bottom = 12;
       vertical-margin        = 5;
       vertical-margin-bottom = 5;
-      horizontal-margin = 10;
+      horizontal-margin = 5;
     };
     "org/gnome/shell/extensions/paperwm/keybindings" = {
     # == Navigation ================== #
@@ -143,3 +170,4 @@ in {
   };
 
 }
+
