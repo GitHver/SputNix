@@ -87,11 +87,11 @@ Once you have decided on a hostname, open ~/Sputnix/archive/template/hostname.ni
 **Username:**
 Your username. The user field looks like this:
 ```nix
-# ====== User management =============================================== #
+ #====<< User management >>====================================================>
   users.mutableUsers = true;             # Makes the home directory writeable.
   users.users = {                        # See *Users* for more info
-    "your-user-directory-name" = {         # example: "john-smith"
-    description  = "Your Display Name";    # example: "John Smith"
+    users.users.${userdirectory} = {       # example: "john-smith"
+    description  = "${displayname}";       # example: "John Smith"
     isNormalUser = true;
     extragroups = [ "wheel" "networkmanager" ];
     };
@@ -102,12 +102,13 @@ Your username. The user field looks like this:
 **Localization:**
 Sets the language and keymap for your system. Open the configuration file in /etc/nixos and copy the appropriate settings to this place:
 ```nix
-# ====== Localization ================================================== #
-  time.timeZone = "Europe/London";
-  locale-all = "en_GB.UTF-8";       # default is "en_GB.UTF-8".
-  console.keyMap = "uk";            # Sets the console keymap.
-  services.xserver.xkb = {          # Set the keymap for Xserver.
-    layout = "gb";
+ #====<< Localization >>=======================================================>
+  time.timeZone = "Atlantic/Reykjavik";
+  i18n.defaultLocale  = "en_GB.UTF-8";  # Set default localization.
+  extraLocaleSettings = "is_IS.UTF-8";  # Set main localization.
+  console.keyMap = "is-latin1";         # Sets the console keymap.
+  services.xserver.xkb = {              # Set the keymap for Xserver.
+    layout = "is";
     variant = "";
   };
 ```
