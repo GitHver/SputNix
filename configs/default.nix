@@ -78,6 +78,8 @@ in
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
   };};
+  # Uncomment the below if you want to use home manager as a module
+  #home-manager.users.${username} = imports ./../user/home.nix;
 
  #====<< System packages >>====================================================>
   services.flatpak.enable = true;       # See "flatpaks" for more info.
