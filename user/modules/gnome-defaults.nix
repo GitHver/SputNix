@@ -26,6 +26,7 @@ let
     gnome.gnome-music           # (music) music player
     gnome.totem                 # (videos) video player  
   ];
+
   gnomeExtensionsList = with pkgs.gnomeExtensions; [
 /*1*/ paperwm
 /*2*/ vitals
@@ -124,7 +125,7 @@ in {
     };
 
   # ==== PaperWM ============================================================= #
-    "org/gnome/shell/extensions/paperwm/keybindings" = {
+    "org/gnome/shell/extensions/paperwm" = {
       show-window-position-bar = false;
       window-gap = 5;
       selection-border-size = 0;
@@ -170,4 +171,3 @@ in {
   };
 
 }
-
