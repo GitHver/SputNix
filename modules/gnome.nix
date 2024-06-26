@@ -16,7 +16,8 @@
     gnome-tour      # you don't need this
   ];
 
-  # once you have chosen a terminal emulator, delete the lines bellow:
+  # once you have chosen a terminal emulator and a file explorer in your
+  # home.nix, delete the lines bellow:
   environment.systemPackages = with pkgs; [ 
     gnome-console
     gnome.nautilus
