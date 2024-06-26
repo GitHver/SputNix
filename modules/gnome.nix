@@ -19,6 +19,7 @@
   # once you have chosen a terminal emulator, delete the lines bellow:
   environment.systemPackages = with pkgs; [ 
     gnome-console
+    gnome.nautilus
   ];
 
 }
