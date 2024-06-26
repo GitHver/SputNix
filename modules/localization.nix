@@ -2,24 +2,24 @@
 
 {
 
-# ==== Internationalisation properties. ====================================== #
-  options.locale-all = lib.mkOption {
-    default = "en_GB.UTF-8";
+ #====<< Internationalisation properties. >>===================================>
+  options.extraLocaleSetting = lib.mkOption {
+    default                  = "en_GB.UTF-8";
   };
 
   config.i18n = {
-    defaultLocale = "en_GB.UTF-8";
     extraLocaleSettings = {
-      LC_ADDRESS =        "${config.locale-all}";
-      LC_IDENTIFICATION = "${config.locale-all}";
-      LC_MEASUREMENT =    "${config.locale-all}";
-      LC_MONETARY =       "${config.locale-all}";
-      LC_NAME =           "${config.locale-all}";
-      LC_NUMERIC =        "${config.locale-all}";
-      LC_PAPER =          "${config.locale-all}";
-      LC_TELEPHONE =      "${config.locale-all}";
-      LC_TIME =           "${config.locale-all}"; 
+      LC_ADDRESS        = "${config.extraLocaleSettings}";
+      LC_IDENTIFICATION = "${config.extraLocaleSettings}";
+      LC_MEASUREMENT    = "${config.extraLocaleSettings}";
+      LC_MONETARY       = "${config.extraLocaleSettings}";
+      LC_NAME           = "${config.extraLocaleSettings}";
+      LC_NUMERIC        = "${config.extraLocaleSettings}";
+      LC_PAPER          = "${config.extraLocaleSettings}";
+      LC_TELEPHONE      = "${config.extraLocaleSettings}";
+      LC_TIME           = "${config.extraLocaleSettings}"; 
     };
   };
 
 }
+
