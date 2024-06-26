@@ -155,7 +155,7 @@ Some common commands you'll need to know are:
   - and: `3d` 3days, `5m` 5months, `2w` 2weeks
   - example: `nix-collect-garbage --delete-older-than 10d`
  
-These all come pre packaged with the home manager home.nix provided in `user/`. with rebuild-s and rebuild-h rebuilding the system and home respectively, update-s and update-h updating the flake.lock, upgrade which executes all of the previous commands, and finally clean, which deletes all packages exclusive to generations that have gone unused for more than a day.
+These all come pre packaged with the home manager home.nix provided in `user/`. with `rebuild-s` and `rebuild-h` rebuilding the system and home respectively, `update-s` and `update-h` updating the flake.lock, `upgrade` which executes all of the previous commands, and finally `clean`, which deletes all packages exclusive to generations that have gone unused for more than a day.
 
 ***Home-manager***
 
