@@ -42,6 +42,10 @@ let
 # *6 choose an accent colour for the gnome interface
 in {
 
+  # downloads all extensions and applications
+  home.packages = gnomeCoreUtils ++ gnomeExtensionsList;
+
+ #====<< Icon Themes >>========================================================>
   gtk = {
     enable = true;
     iconTheme = {
@@ -49,8 +53,6 @@ in {
       package = pkgs.papirus-icon-theme;
     };
   };
-
-  home.packages = gnomeCoreUtils ++ gnomeExtensionsList;
 
   dconf.settings = {
 
@@ -66,7 +68,7 @@ in {
         #"system-monitor@gnome-shell-extensions.gcampax.github.com"
       ];
 
-   #
+   #==<< Common settings ======================================================>
     "org/gnome/desktop/interface" = {
      #==<< General >>==================>
       color-scheme = "prefer-dark" ;
