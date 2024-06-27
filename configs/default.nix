@@ -77,6 +77,12 @@ in
     description = "${displayname}";    # example: "John Smith"
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
+    packages = with pkgs; [ 
+      gnome-console gnome-text-editor gnome.nautilus firefox
+    ]; /* These programs are provided in the home manager home.nix, but due
+      to needing to build this configuration once before being able to use
+      home manager, these essential programs are here so that they dont
+      dissapear mid setup. remove these once you have home manager set up. */
   };};
   # Uncomment the below if you want to use home manager as a module
   #home-manager.users.${username} = imports ./../user/home.nix;
@@ -88,7 +94,6 @@ in
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [ 
    #==<< Terminal utilities >>=========>
-    wezterm   # Rust terminal emulator configured in lua
     zellij    # User friendly terminal multiplexer
     helix     # No nonsense terminal modal text editor
     yazi      # Batteries included terminal file manager
