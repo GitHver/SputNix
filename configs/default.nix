@@ -19,6 +19,36 @@ in
 
   config = { ################# Config scope ####################################
 
+ #====<< User management >>====================================================>
+  users.mutableUsers = true;         # Makes the home directory writeable.
+  users.users = {                    # See *Users* for more info
+    "${userdirectory}" = {             # example: "john-smith" see at top ↑
+    description = "${displayname}";    # example: "John Smith"
+    isNormalUser = true;
+    extraGroups = [ "wheel" "networkmanager" ];
+    packages = with pkgs; [ 
+      gnome-console gnome-text-editor gnome.nautilus firefox
+    ]; /* These programs are provided in the home manager home.nix, but due
+      to needing to build this configuration once before being able to use
+      home manager, these essential programs are here so that they dont
+      dissapear mid setup. remove these once you have home manager set up. */
+  };};
+  # Uncomment the below if you want to use home manager as a module
+  #home-manager.users.${username} = imports ./../user/home.nix;
+
+ #====<< System packages >>====================================================>
+  services.flatpak.enable = true;       # See "flatpaks" for more info.
+  # Below is where all the sytem-wide packages are installed.
+  # Go to https://search.nixos.org/packages to search for programs.
+  nixpkgs.config.allowUnfree = true;
+  environment.systemPackages = with pkgs; [ 
+   #==<< Terminal utilities >>=========>
+    zellij    # User friendly terminal multiplexer
+    helix     # No nonsense terminal modal text editor
+    yazi      # Batteries included terminal file manager
+    git       # Best learn to use git. it *WILL* make your life easier.
+  ];
+
  #=====<< Bootloader >>========================================================>
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -68,36 +98,6 @@ in
       "CascadiaCode"
       #"FiraCode"
     ]; })
-  ];
-
- #====<< User management >>====================================================>
-  users.mutableUsers = true;         # Makes the home directory writeable.
-  users.users = {                    # See *Users* for more info
-    "${userdirectory}" = {             # example: "john-smith" see at top ↑
-    description = "${displayname}";    # example: "John Smith"
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
-    packages = with pkgs; [ 
-      gnome-console gnome-text-editor gnome.nautilus firefox
-    ]; /* These programs are provided in the home manager home.nix, but due
-      to needing to build this configuration once before being able to use
-      home manager, these essential programs are here so that they dont
-      dissapear mid setup. remove these once you have home manager set up. */
-  };};
-  # Uncomment the below if you want to use home manager as a module
-  #home-manager.users.${username} = imports ./../user/home.nix;
-
- #====<< System packages >>====================================================>
-  services.flatpak.enable = true;       # See "flatpaks" for more info.
-  # Below is where all the sytem-wide packages are installed.
-  # Go to https://search.nixos.org/packages to search for programs.
-  nixpkgs.config.allowUnfree = true;
-  environment.systemPackages = with pkgs; [ 
-   #==<< Terminal utilities >>=========>
-    zellij    # User friendly terminal multiplexer
-    helix     # No nonsense terminal modal text editor
-    yazi      # Batteries included terminal file manager
-    git       # Best learn to use git. it *WILL* make your life easier.
   ];
 
 };} ################ End of variable & config scope. ###########################
