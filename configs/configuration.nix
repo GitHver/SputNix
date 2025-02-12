@@ -55,7 +55,7 @@ in { config = {
     settings = {
       # Access rights to the Nix deamon. This is a list of users, but you can
       # specify groups by prefixing an entry with `@`. `*` is everyone.
-      allowed-users = [ "nixers" ];
+      allowed-users = [ "nixers" ]; # default is [ "*" ].
       trusted-users = [ "root" "@wheel" ];
       # These are features needed for flakes to work. You can find more at:
       # https://nix.dev/manual/nix/2.24/development/experimental-features

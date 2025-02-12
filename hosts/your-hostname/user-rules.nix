@@ -10,6 +10,7 @@
       isNormalUser = true;
       extraGroups = [
         "wheel"
+        "nixers"
         "networkmanager"
       ];
       # This makes it so that user systemd services are started on boot rather

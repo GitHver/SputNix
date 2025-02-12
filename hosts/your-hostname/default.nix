@@ -4,7 +4,7 @@
   # Imports all the files in this host's directory, as some not all might have
   # the same files in the structure.
   imports = [
-    ./accounts.nix
+    ./user-rules.nix
     ./disko.nix
     ./hardware-configuration.nix
     ./../../configs/configuration.nix
