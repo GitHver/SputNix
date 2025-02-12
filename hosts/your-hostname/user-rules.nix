@@ -25,6 +25,7 @@
       # public without exposing the default password of new users. To make a
       # hashed password, use: `mkpasswd -s` and then type your password,
       # then copy the hash and replace this hash with the new one.
+      initialPassword = "asdf";
       # initialHashedPassword =
       #   "$y$j9T$exX8G.UG6FWPaovI79bjC.$sJUZr3BYq6LUK0B0bN4VJ2mfpgZpFTFHVXsZAib6mxB";
     };
