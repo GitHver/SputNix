@@ -2,7 +2,6 @@
 
 let
   inherit (lib) mkDefault;
-  experimental = false;
 in { config = {
 
   #====<< System Services >>===================================================>
@@ -48,14 +47,24 @@ in { config = {
   };
 
   #====<< Nix specific settings >>=============================================>
-  system.stateVersion = "25.05";  # What version of NixOS configs to use.
+  # Settings for the Nix package manager.
   nix = {
-    # What version of the Nix package manager to use. You can also use Lix.
-    package = if !experimental then pkgs.nix else pkgs.nixVersions.latest;
+    # What version of the Nix package manager to use.
+    package = pkgs.nix;
+    # Automatically delete old & unused packages
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+    # Here are the settings that get put into `/etc/nix/nix.conf`.
     settings = {
+      # Replaces identical files with links to save space. works the same as:
+      # `nix store optimise`
+      auto-optimise-store = true;
       # Access rights to the Nix deamon. This is a list of users, but you can
       # specify groups by prefixing an entry with `@`. `*` is everyone.
-      allowed-users = [ "nixers" ]; # default is [ "*" ].
+      allowed-users = [ "nixers" ];
       trusted-users = [ "root" "@wheel" ];
       # These are features needed for flakes to work. You can find more at:
       # https://nix.dev/manual/nix/2.24/development/experimental-features
@@ -67,19 +76,13 @@ in { config = {
         # "dynamic-derivations"
       ];
     };
-    # For `nixd` package and option evaluation
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-    # Replaces identical files with links to save space. works the same as:
-    # `nix store optimise`
-    settings.auto-optimise-store = true;
-    # Automatically delete old & unused packages
-    gc.automatic = true;
-    gc.dates = "weekly";
-    gc.options = "--delete-older-than 7d";
   };
 
   #====<< Miscellaneous >>=====================================================>
-  documentation.nixos.enable = false; # Removes the NixOS manual application.
+  # What version of NixOS configs to use.
+  system.stateVersion = "25.05";
+  # Removes the NixOS manual application.
+  documentation.nixos.enable = false;
   # Nix ld is one solution to the static binary problem. This only affects you
   # if you need to run random binaries from sources other than nixpkgs. Learn
   # more here: https://github.com/nix-community/nix-ld

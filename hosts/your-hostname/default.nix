@@ -22,9 +22,10 @@
   boot.loader.systemd-boot = {
     enable = true;
     configurationLimit = 20;
-    consoleMode = "1";
+    consoleMode = "auto";
     memtest86.enable = false;
     netbootxyz.enable = false;
+    editor = false;
   };
   # Boot font style and size.
   console = {
@@ -65,14 +66,15 @@
     # not needed in most configurations.
     graphics.enable = true;
     graphics.enable32Bit = true;
-    # AMD GPU tuning. Drivers are enabled by default with `graphics.enable`.
+    # # AMD GPU tuning. Drivers are enabled by default with `graphics.enable`.
     # amdgpu = {
     #   initrd.enable = true;
     #   opencl.enable = true;
     #   amdvlk.enable = true;
     #   amdvlk.support32Bit.enable = true;
+    #   rocmExtras.enable = true;
     # };
-    # NVIDIA GPU Drivers.
+    # # NVIDIA GPU Drivers.
     # nvidia = {
     #   enable = true;
     #   open = true;
